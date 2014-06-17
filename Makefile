@@ -1,5 +1,5 @@
 
-papers.pdf: papers.tex papers.bib
+papers.pdf: papers.tex papers.bib papers.bst
 	pdflatex papers
 	bibtex papers
 	pdflatex papers

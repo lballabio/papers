@@ -1,12 +1,5 @@
-% BibTeX standard bibliography style `plain'
-   % Version 0.99b (8-Dec-10 release) for BibTeX versions 0.99a or later.
-   % Copyright (C) 1984, 1985, 1988, 2010 Howard Trickey and Oren Patashnik.
-   % Unlimited copying and redistribution of this file are permitted as long as
-   % it is unmodified.  Modifications (and redistribution of modified versions)
-   % are also permitted, but only if the resulting file is renamed to something
-   % besides btxbst.doc, plain.bst, unsrt.bst, alpha.bst, and abbrv.bst.
-   % This restriction helps ensure that all standard styles are identical.
-   % The file btxbst.doc has the documentation for this style.
+% adapted from BibTeX standard bibliography style `plain'
+% to augment it with clickable URLs
 
 ENTRY
   { address
@@ -29,6 +22,7 @@ ENTRY
     series
     title
     type
+    url
     volume
     year
   }
@@ -234,6 +228,13 @@ FUNCTION {format.title}
 { title empty$
     { "" }
     { title "t" change.case$ }
+  if$
+}
+
+FUNCTION {format.url}
+{ url empty$
+    { "" }
+    { "Available from \url{" url "}" * * }
   if$
 }
 
@@ -552,6 +553,8 @@ FUNCTION {article}
   if$
   new.block
   note output
+  new.block
+  format.url output
   fin.entry
 }
 
@@ -584,6 +587,8 @@ FUNCTION {book}
   format.date "year" output.check
   new.block
   note output
+  new.block
+  format.url output
   fin.entry
 }
 
@@ -598,6 +603,8 @@ FUNCTION {booklet}
   format.date output
   new.block
   note output
+  new.block
+  format.url output
   fin.entry
 }
 
@@ -632,6 +639,8 @@ FUNCTION {inbook}
   format.date "year" output.check
   new.block
   note output
+  new.block
+  format.url output
   fin.entry
 }
 
@@ -658,6 +667,8 @@ FUNCTION {incollection}
   if$
   new.block
   note output
+  new.block
+  format.url output
   fin.entry
 }
 
@@ -692,6 +703,8 @@ FUNCTION {inproceedings}
   if$
   new.block
   note output
+  new.block
+  format.url output
   fin.entry
 }
 
@@ -728,6 +741,8 @@ FUNCTION {manual}
   format.date output
   new.block
   note output
+  new.block
+  format.url output
   fin.entry
 }
 
@@ -743,6 +758,8 @@ FUNCTION {mastersthesis}
   format.date "year" output.check
   new.block
   note output
+  new.block
+  format.url output
   fin.entry
 }
 
@@ -756,6 +773,8 @@ FUNCTION {misc}
   format.date output
   new.block
   note output
+  new.block
+  format.url output
   fin.entry
   empty.misc.check
 }
@@ -772,6 +791,8 @@ FUNCTION {phdthesis}
   format.date "year" output.check
   new.block
   note output
+  new.block
+  format.url output
   fin.entry
 }
 
@@ -807,6 +828,8 @@ FUNCTION {proceedings}
   if$
   new.block
   note output
+  new.block
+  format.url output
   fin.entry
 }
 
@@ -822,6 +845,8 @@ FUNCTION {techreport}
   format.date "year" output.check
   new.block
   note output
+  new.block
+  format.url output
   fin.entry
 }
 
@@ -833,6 +858,8 @@ FUNCTION {unpublished}
   new.block
   note "note" output.check
   format.date output
+  new.block
+  format.url output
   fin.entry
 }
 
